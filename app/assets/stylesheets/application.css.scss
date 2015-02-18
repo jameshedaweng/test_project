@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+ul{
+	padding: 0px;
+	li{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		list-style-type: none;
+	}
+}

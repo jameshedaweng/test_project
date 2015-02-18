@@ -25,6 +25,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @article.publish_date = Time.now.to_formatted_s(:long)
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save

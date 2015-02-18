@@ -1,9 +1,18 @@
 <h1>Administrate other users</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.email %>
-      <%= link_to "Delete", user_path(user), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure to delete the user #{user.email}?"} %>
-    </li>
-  <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= link_to "Delete", user_path(user), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure to delete the user #{user.email}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

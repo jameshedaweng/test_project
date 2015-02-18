@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
-gem 'sqlite3'
 gem 'sprockets-rails', '~> 2.2.4'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'sass-rails', '~> 5.0'
@@ -15,6 +14,7 @@ gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
 gem 'devise', '~> 3.4.1'
 gem 'cancan', '~> 1.6.10'
+gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

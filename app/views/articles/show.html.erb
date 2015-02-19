@@ -13,5 +13,56 @@
   <%= @article.publish_date %>
 </p>
 
+<p>
+  <strong>Thumbnail:</strong>
+  <% if @article.thumbnail? %>
+    <%= cl_image_tag(@article.thumbnail.path, :width => 300, :crop => :fill, :quality => 75) %>
+  <% else %>
+    <p>No thumbnail uploaded yet!!</p>
+  <% end %>
+</p>
+
+<h2>Comments:</h2>
+<% if @article.comments.empty? %>
+  <p> No comments yet! </p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Published On</th>
+        <th>Content</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @article.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.email %></td>
+          <td><%= comment.publish_date %></td>
+          <td><%= comment.content %></td>
+          <td>
+            <% if comment.user == current_user %>
+              <%= link_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+              <%= link_to 'Edit', edit_article_comment_path(@article, comment), class: "btn btn-info" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= form_for [@article, @article.comments.build] do |f| %>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-info" %> 
 <%= link_to 'Back', articles_path, class: "btn btn-default" %>

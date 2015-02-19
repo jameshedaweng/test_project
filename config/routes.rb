@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :articles
+  
+  mount Attachinary::Engine => "/attachinary"
+  resources :articles do
+    resources :comments
+  end
 
   devise_for :users
   devise_scope :user do

@@ -8,6 +8,7 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+require "attachinary/orm/mongoid"
 
 module TestProject
   class Application < Rails::Application
@@ -27,3 +28,4 @@ module TestProject
     # config.active_record.raise_in_transactional_callbacks = true
   end
 end
+

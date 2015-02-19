@@ -1,10 +1,15 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = if current_user.admin?
+      Article.all
+    else
+      current_user.articles
+    end
   end
 
   # GET /articles/1
@@ -71,6 +76,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :content)
+      params.require(:article).permit(:name, :content, :thumbnail)
     end
 end

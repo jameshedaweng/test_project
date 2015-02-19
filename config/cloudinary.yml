@@ -1,0 +1,18 @@
+development:
+  cloud_name: deheogiph
+  api_key: '593298315196998'
+  api_secret: i6MG9BnVgU1F4UjwI04NkiQL7S8
+  enhance_image_tag: true
+  static_image_support: true
+production:
+  cloud_name: deheogiph
+  api_key: '593298315196998'
+  api_secret: i6MG9BnVgU1F4UjwI04NkiQL7S8
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: deheogiph
+  api_key: '593298315196998'
+  api_secret: i6MG9BnVgU1F4UjwI04NkiQL7S8
+  enhance_image_tag: true
+  static_image_support: false

@@ -43,9 +43,11 @@
           <td><%= comment.publish_date %></td>
           <td><%= comment.content %></td>
           <td>
-            <% if comment.user == current_user %>
-              <%= link_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-              <%= link_to 'Edit', edit_article_comment_path(@article, comment), class: "btn btn-info" %>
+            <% if can? :update, comment %>
+              <%= link_to 'Edit', edit_comment_path(comment), class: "btn btn-info" %>
+            <% end %>
+            <% if can? :destroy, comment %>
+              <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             <% end %>
           </td>
         </tr>
@@ -54,15 +56,7 @@
   </table>
 <% end %>
 
-<%= form_for [@article, @article.comments.build] do |f| %>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
-  </div>
-<% end %>
+<%= render_comment_form [@article, @article.comments.build] if user_signed_in? %>
 
 <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-info" %> 
 <%= link_to 'Back', articles_path, class: "btn btn-default" %>

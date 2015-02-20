@@ -1,13 +1,5 @@
 <h1>Editing Comment</h1>
 
-<%= form_for [@article, @comment] do |f| %>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-success" %>
-  </div>
-<% end %>
+<%= render_comment_form (@comment) %>
 
 <%= link_to 'Back', article_path(@comment.article), class: "btn btn-default" %>

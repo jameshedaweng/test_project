@@ -1,13 +1,11 @@
-<h1>Listing Articles</h1>
+<h1>All Articles</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Published On</th>
-      <% if current_user.admin? %>
-        <th>User</th>
-      <% end %>
+      <th>User</th>
     </tr>
   </thead>
 
@@ -16,13 +14,15 @@
       <tr>
         <td><%= article.name %></td>
         <td><%= article.publish_date %></td>
-        <% if current_user.admin? %>
-          <td><%= article.user.email %></td>
-        <% end %>
+        <td><%= article.user.email %></td>
         <td>
           <%= link_to 'Show', article, class: "btn btn-info" %>
-          <%= link_to 'Edit', edit_article_path(article), class: "btn btn-info" %>
+          <% if can? :update, article %>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-info" %>
+          <% end %>
+          <% if can? :destroy, article %>
           <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

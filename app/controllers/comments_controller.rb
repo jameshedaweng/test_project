@@ -1,10 +1,8 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def edit
-    @article = Article.find(params[:article_id])
-    @comment = Comment.find(params[:id])
   end
 
   def create
@@ -25,7 +23,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment.article, notice: 'Comemnt was successfully updated.' }
+        format.html { redirect_to @comment.article, notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }      
       end
@@ -33,7 +31,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @comment.article, notice: 'Comment was successfully deleted.' }
@@ -41,12 +38,10 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content)
     end

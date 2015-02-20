@@ -11,10 +11,10 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid'
 gem 'bson_ext'
 gem 'devise', '~> 3.4.1'
-gem 'cancan', '~> 1.6.10'
+gem 'cancancan'
 gem 'cloudinary'
 gem 'attachinary'
 

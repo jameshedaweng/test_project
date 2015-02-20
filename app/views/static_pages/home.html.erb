@@ -5,14 +5,16 @@
     <p>Welcome <%=  current_user.email %></p>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-info" %>
     <p>You can do the following things:</p>
-    <%= link_to "Manage Articles", articles_path, class: "btn btn-primary" %>
+    <%= link_to "Read Articles", articles_path, class: "btn btn-primary" %>
     <%= link_to "Write a New Article", new_article_path, class: "btn btn-primary" %>
+    <% if current_user.try(:admin?) %>
+      <p>You are an admin user.</p>
+      <%= link_to "Administrate dummy users", user_index_path, class: "btn btn-warning"  %>
+    <% end %>
   <% else %>
     <p>Welcome guest! You need an account to see our awesome stuff! ;-)</p>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-success"%> or <%= link_to "Sign up", new_user_registration_path, class: "btn btn-info"  %>
-  <% end %>
-  <% if current_user.try(:admin?) %>
-    <p>You are an admin user.</p>
-    <%= link_to "Administrate dummy users", user_index_path, class: "btn btn-warning"  %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-success"%> or 
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-info"  %> or 
+    <%= link_to "Read Articles", articles_path, class: "btn btn-primary" %>
   <% end %>
 </div>

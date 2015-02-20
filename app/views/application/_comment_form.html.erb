@@ -1,8 +1,9 @@
+<h3> New Comment </h3>
 <%= form_for path do |f| %>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "text-area" %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
   </div>

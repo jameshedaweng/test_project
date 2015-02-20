@@ -13,16 +13,19 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "text-area" %>
   </div>
+  <br>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "text-area big-text-area" %>
   </div>
+  <br>
   <div class="field">
     <%= f.label :thumbnail %><br>
     <%= f.attachinary_file_field :thumbnail %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
   </div>

@@ -1,27 +1,17 @@
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @article.name %>
-</p>
-
+</h1>
+<%= @article.publish_date %>
+<br>
+<% if @article.thumbnail? %>
+  <%= cl_image_tag(@article.thumbnail.path, :width => 300, :crop => :fill, :quality => 75) %>
+<% else %>
+  <p>No thumbnail uploaded yet!!</p>
+<% end %>
+<br>
 <p>
-  <strong>Content:</strong>
   <%= @article.content %>
 </p>
-
-<p>
-  <strong>Published on:</strong>
-  <%= @article.publish_date %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <% if @article.thumbnail? %>
-    <%= cl_image_tag(@article.thumbnail.path, :width => 300, :crop => :fill, :quality => 75) %>
-  <% else %>
-    <p>No thumbnail uploaded yet!!</p>
-  <% end %>
-</p>
-
 <h2>Comments:</h2>
 <% if @article.comments.empty? %>
   <p> No comments yet! </p>
@@ -55,8 +45,7 @@
     </tbody>
   </table>
 <% end %>
-
 <%= render_comment_form [@article, @article.comments.build] if user_signed_in? %>
-
+<br>
 <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-info" %> 
 <%= link_to 'Back', articles_path, class: "btn btn-default" %>

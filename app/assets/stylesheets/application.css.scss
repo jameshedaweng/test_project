@@ -2,8 +2,7 @@
 @import "bootstrap";
 
 body{
-	padding-left: 30px;
-	padding-right: 30px;
+	padding: 30px;
 }
 
 ul{
@@ -24,4 +23,12 @@ br {
 
 .attachinary-input{
 	padding:10px;
+}
+
+.text-area{
+	width:100%;
+}
+
+.big-text-area{
+	height: 300px;
 }

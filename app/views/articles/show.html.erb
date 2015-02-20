@@ -5,8 +5,6 @@
 <br>
 <% if @article.thumbnail? %>
   <%= cl_image_tag(@article.thumbnail.path, :width => 300, :crop => :fill, :quality => 75) %>
-<% else %>
-  <p>No thumbnail uploaded yet!!</p>
 <% end %>
 <br>
 <p>
